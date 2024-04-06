@@ -5,6 +5,7 @@ import GetShelterDetailsUseCase from './usecases/get.shelter.details.usecase';
 import { Mongoose } from 'mongoose';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Shelter, ShelterSchema } from './schemas/shelter.schema';
+import { ShelterRepository } from './shelter.repository';
 
 @Module({
   controllers: [ShelterController],
@@ -17,7 +18,16 @@ import { Shelter, ShelterSchema } from './schemas/shelter.schema';
     {
       provide: ShelterTokens.getShelterDetailsUseCase,
       useClass: GetShelterDetailsUseCase
+    },
+    {
+      provide: ShelterTokens.shelterRepository,
+      useClass: ShelterRepository
+    },
+    {
+      provide: ShelterTokens.updateShelterDetailsUseCase,
+      useClass: GetShelterDetailsUseCase
     }
+    
   ]
 })
 export class ShelterModule {}
