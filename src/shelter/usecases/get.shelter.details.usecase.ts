@@ -24,14 +24,5 @@ export default class GetShelterDetailsUseCase
             createdAt: shelter.createdAt,
             updateAt: shelter.updateAt,
         });
-
-        // return Promise.resolve(new GetShelterDetailsUseCaseOutput({
-        //     shelterName: 'Abrigo Bigo',
-        //     shelterEmail: 'abb@gmail.com',
-        //     shelterPhone: '19981281830',
-        //     shelterWhatsApp: '19981281830',
-        //     createdAt: new Date(),
-        //     updatedAt: new Date()
-        // }))
     }
 }
