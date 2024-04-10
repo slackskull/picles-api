@@ -1,14 +1,12 @@
 import { IUseCase } from "src/domain/iusecase.interface";
-import CreatePetUseCaseOutput from "./dtos/create.pet.usecase.output";
 import CreatePetUseCaseInput from "./dtos/create.pet.usecase.input";
+import CreatePetUseCaseOutput from "./dtos/create.pet.usecase.output";
 import { Inject, Injectable } from "@nestjs/common";
 import IPetRepository from "../interfaces/pet.repository.interface";
-import { Pet } from "../schemas/pet.schema";
 import PetTokens from "../pet.tokens";
 
 @Injectable()
-export default class CreatePetUseCase implements IUseCase<CreatePetUseCaseInput, CreatePetUseCaseOutput>{
-
+export default class CreatePetUseCase implements IUseCase<CreatePetUseCaseInput, CreatePetUseCaseOutput> {
 
     constructor(
         @Inject(PetTokens.petRepository)
@@ -17,7 +15,7 @@ export default class CreatePetUseCase implements IUseCase<CreatePetUseCaseInput,
 
     async run(input: CreatePetUseCaseInput): Promise<CreatePetUseCaseOutput> {
         const newPet = await this.petRepository.create(input)
-        return new CreatePetUseCaseOutput ({
+        return new CreatePetUseCaseOutput({
             id: newPet._id,
             name: newPet.name,
             type: newPet.type,
@@ -27,9 +25,6 @@ export default class CreatePetUseCase implements IUseCase<CreatePetUseCaseInput,
             photo: newPet.photo,
             createdAt: newPet.createdAt,
             updatedAt: newPet.updatedAt,
-
         })
     }
-
 }
-    
