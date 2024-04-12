@@ -40,4 +40,8 @@ export default class PetRepository implements IPetRepository {
         await this.petModel.findByIdAndDelete(id)
     }
 
+    // async updatePhotoById(id: string): Promise<void>{
+    //     await this.petModel.findPetById(id)
+    // }
+
 }
